@@ -1,15 +1,14 @@
-package ethebee3.ServerPlugin.events;
+package ethebee3.BetturPlugin.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import ethebee3.ServerPlugin.ServerPlugin;
+import ethebee3.BetturPlugin.Main;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.io.File;
 import java.util.List;
 
 public class onAsyncPlayerChatEvent implements Listener {
-    public onAsyncPlayerChatEvent(ServerPlugin serverPlugin) {}
+    public onAsyncPlayerChatEvent(Main serverPlugin) {}
     //random constructor, dont question it
 
 
@@ -23,10 +22,10 @@ public class onAsyncPlayerChatEvent implements Listener {
     }
 
     public boolean checkSwear(String message) {
-        if (ServerPlugin.words == null) {
+        if (Main.words == null) {
             return false;
         }
-        List<String> warnList = ServerPlugin.words.getStringList("warnList");
+        List<String> warnList = Main.words.getStringList("warnList");
         for (int i = 1; i < warnList.size(); i++) {
             String word = warnList.get(i);
             if (message.contains(word)) {

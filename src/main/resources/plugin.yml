@@ -1,9 +1,9 @@
 name: DupePlugin
 version: '1.1'
-main: ethebee3.ServerPlugin.ServerPlugin
+main: ethebee3.BetturPlugin.BetturPlugin
 api-version: '1.20'
 
-commands:
-  dupe:
-    description: Dupe Your Items
-    usage: /<command>
+#commands:
+#  dupe:
+#    description: Dupe Your Items
+#    usage: /<command>

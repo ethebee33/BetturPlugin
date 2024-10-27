@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BetturPlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BetturPlugin.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DupePlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DupePlugin.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ServerPlugin.DupePlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ServerPlugin.DupePlugin.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dupesystem.DupePlugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dupesystem.DupePlugin.main.iml" />

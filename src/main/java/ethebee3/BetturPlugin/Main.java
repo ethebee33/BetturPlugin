@@ -1,14 +1,11 @@
-package ethebee3.ServerPlugin;
+package ethebee3.BetturPlugin;
 
-import ethebee3.ServerPlugin.commands.DupeCMD;
+import ethebee3.BetturPlugin.commands.DupeCMD;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import ethebee3.ServerPlugin.events.*;
+import ethebee3.BetturPlugin.events.*;
 
-import java.io.File;
-import java.util.List;
-
-public final class ServerPlugin extends JavaPlugin {
+public final class Main extends JavaPlugin {
     public static YamlConfiguration words = null;
 
 
@@ -30,7 +27,7 @@ public final class ServerPlugin extends JavaPlugin {
     }
 
     public void registerCommands() {
-        this.getCommand("dupe").setExecutor(new DupeCMD());
+        //this.getCommand("dupe").setExecutor(new DupeCMD());
     }
 
     public void initYml() {}
