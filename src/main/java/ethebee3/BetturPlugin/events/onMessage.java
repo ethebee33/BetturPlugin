@@ -16,7 +16,7 @@ public class onMessage implements Listener {
 
     @EventHandler
     public void onMessage(AsyncPlayerChatEvent event) {
-        String swear = checkSwear(event.getMessage());
+        String swear = String.valueOf(checkSwear(event.getMessage()));
         if (swear != null) {
             event.setCancelled(true);
             ChatUtils.sendMessage(event.getPlayer(), String.join("A word in this sentence is not allowed:", swear), true);
@@ -25,17 +25,17 @@ public class onMessage implements Listener {
         }
     }
 
-    public String checkSwear(String message) {
+    public boolean checkSwear(String message) {
         if (Main.wordsConfig == null) {
-            return null;
+            return false;
         }
         List<String> warnList = Main.wordsConfig.getStringList("warnList");
         for (int i = 1; i < warnList.size(); i++) {
             String word = warnList.get(i);
             if (message.contains(word)) {
-                return word;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 }
