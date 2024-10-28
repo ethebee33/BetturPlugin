@@ -1,6 +1,5 @@
 package ethebee3.BetturPlugin;
 
-import ethebee3.BetturPlugin.commands.DupeCMD;
 import ethebee3.BetturPlugin.commands.spawnUtils.SpawnCMD;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,14 +10,12 @@ import java.io.File;
 import java.io.IOException;
 
 public final class Main extends JavaPlugin {
-    public static YamlConfiguration words = null;
-
 
     @Override
     public void onEnable() {
+        registerConfigs();
         registerListeners();
         registerCommands();
-        initYml();
     }
 
     @Override
@@ -27,39 +24,37 @@ public final class Main extends JavaPlugin {
     }
 
     //TODO: make a default config, to store configurations
-    private File temp;
+    public static File tempDataFile;
+    public static File wordsFile;
     public static FileConfiguration tempDataConfig;
     public static FileConfiguration wordsConfig;
     public void registerConfigs() {
         //tempdata.yml
-        temp = new File(this.getDataFolder(), "tempData.yml");
-        if (!temp.exists()) {
-            if (makeYml(temp)) tempDataConfig = YamlConfiguration.loadConfiguration(temp);
+        tempDataFile = new File(this.getDataFolder(), "tempData.yml");
+        if (!tempDataFile.exists()) {
+            if (makeYml(tempDataFile)) tempDataConfig = YamlConfiguration.loadConfiguration(tempDataFile);
         } else {
-            tempDataConfig = YamlConfiguration.loadConfiguration(temp);
+            tempDataConfig = YamlConfiguration.loadConfiguration(tempDataFile);
         }
         //words.yml
-        temp = new File(this.getDataFolder(), "words.yml");
-        if (!temp.exists()) {
-            if (makeYml(temp)) wordsConfig = YamlConfiguration.loadConfiguration(temp);
+        wordsFile = new File(this.getDataFolder(), "words.yml");
+        if (!wordsFile.exists()) {
+            if (makeYml(wordsFile)) wordsConfig = YamlConfiguration.loadConfiguration(wordsFile);
         } else {
-            wordsConfig = YamlConfiguration.loadConfiguration(temp);
+            wordsConfig = YamlConfiguration.loadConfiguration(wordsFile);
         }
     }
 
-    //more organized this way
     public void registerListeners() {
         this.getServer().getPluginManager().registerEvents(new onMessage(this), this);
+        this.getServer().getPluginManager().registerEvents(new onDeath(this), this);
     }
 
     public void registerCommands() {
-        //this.getCommand("dupe").setExecutor(new DupeCMD());
         //spawn commands
         this.getCommand("spawn").setExecutor(new SpawnCMD(this));
         this.getCommand("setspawn").setExecutor(new SpawnCMD(this));
     }
-
-    public void initYml() {}
 
     public boolean makeYml(File temp) {
         try {

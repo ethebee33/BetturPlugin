@@ -14,12 +14,12 @@ import java.io.IOException;
 
 //temp data config import
 import static ethebee3.BetturPlugin.Main.tempDataConfig;
+import static ethebee3.BetturPlugin.Main.tempDataFile;
 
 public class SpawnCMD implements CommandExecutor {
 
     private final JavaPlugin plugin;
-    private File tempDataFile;
-    private Location spawnLocation;
+    public static Location spawnLocation;
 
     public SpawnCMD(JavaPlugin plugin) {
         this.plugin = plugin;
