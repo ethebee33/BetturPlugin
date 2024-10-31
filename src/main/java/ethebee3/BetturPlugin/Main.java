@@ -11,21 +11,24 @@ import ethebee3.BetturPlugin.events.*;
 import java.io.File;
 import java.io.IOException;
 
+import static ethebee3.BetturPlugin.discord.discordBot.registerBot;
+import static ethebee3.BetturPlugin.discord.discordBot.unregisterBot;
 import static ethebee3.BetturPlugin.utils.logUtils.registerLogger;
 
 public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        registerLogger(this);
         registerConfigs();
         registerListeners();
         registerCommands();
+        registerLogger(this);
+        registerBot(this);
     }
 
     @Override
     public void onDisable() {
-
+        unregisterBot();
     }
 
     //TODO: make a default config, to store configurations
