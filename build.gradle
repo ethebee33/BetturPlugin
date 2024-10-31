@@ -19,8 +19,12 @@ repositories {
 
 
 dependencies {
+    //spigot
     compileOnly("org.spigotmc:spigot-api:${MCversion}-R0.1-SNAPSHOT")
+    //javacord for discord bot
     implementation('org.javacord:javacord:3.8.0')
+    //luckperms api
+    compileOnly("net.luckperms:api:5.4")
     //https://hub.spigotmc.org/nexus/service/rest/repository/browse/snapshots/org/spigotmc/spigot-api/
 }
 

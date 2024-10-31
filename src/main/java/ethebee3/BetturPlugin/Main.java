@@ -1,6 +1,8 @@
 package ethebee3.BetturPlugin;
 
+import ethebee3.BetturPlugin.commands.spawnUtils.ClearChatCMD;
 import ethebee3.BetturPlugin.commands.spawnUtils.SpawnCMD;
+import ethebee3.BetturPlugin.commands.spawnUtils.StaffChatCMD;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -54,6 +56,10 @@ public final class Main extends JavaPlugin {
         //spawn commands
         this.getCommand("spawn").setExecutor(new SpawnCMD(this));
         this.getCommand("setspawn").setExecutor(new SpawnCMD(this));
+        //clear chat
+        this.getCommand("clearchat").setExecutor(new ClearChatCMD(this));
+        //staffchat command
+        this.getCommand("staffchat").setExecutor(new StaffChatCMD(this));
     }
 
     public boolean makeYml(File temp) {
