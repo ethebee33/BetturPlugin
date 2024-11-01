@@ -6,11 +6,11 @@ import ethebee3.BetturPlugin.commands.spawnUtils.StaffChatCMD;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import ethebee3.BetturPlugin.events.*;
 
 import java.io.File;
 import java.io.IOException;
 
+import ethebee3.BetturPlugin.events.*;
 import static ethebee3.BetturPlugin.discord.discordBot.registerBot;
 import static ethebee3.BetturPlugin.discord.discordBot.unregisterBot;
 import static ethebee3.BetturPlugin.utils.logUtils.registerLogger;
