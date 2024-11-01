@@ -8,9 +8,10 @@ import ethebee3.BetturPlugin.Main;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import java.util.Collection;
-
+import java.util.HashMap;
 
 
 public class onBreak implements Listener {
@@ -43,6 +44,18 @@ public class onBreak implements Listener {
 
     public void spawnItems(Collection<ItemStack> drops, BlockBreakEvent event) {
         //finish
+        Block block = event.getBlock();
+        PlayerInventory inventory = event.getPlayer().getInventory();
+        for(ItemStack drop : drops) {
+            HashMap<Integer, ItemStack> remainingItems = inventory.addItem(drop);
+
+            // Drop remaining items if inventory is full
+            if (!remainingItems.isEmpty()) {
+                remainingItems.values().forEach(item ->
+                        block.getWorld().dropItemNaturally(block.getLocation(), item)
+                );
+            }
+        }
     }
 
 }
