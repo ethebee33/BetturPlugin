@@ -29,8 +29,8 @@ public class StaffChatCMD implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String command2, String[] args) {
-        if (!(commandSender instanceof Player player)) {
-            commandSender.sendMessage("This command can only be used by players.");
+        if (!commandSender.hasPermission("BetturPlugin.staffchat")) {
+            commandSender.sendMessage("You must have staff to execute this command");
             return true;
         }
 

@@ -71,6 +71,10 @@ public class SpawnCMD implements CommandExecutor {
                 }
             }
             case "setspawn" -> {
+                if (!commandSender.hasPermission("BetturPlugin.setspawn")) {
+                    commandSender.sendMessage("You dont have the permission to execute this command");
+                    return true;
+                }
                 spawnLocation = player.getLocation();
                 saveSpawnLocation(spawnLocation);
                 player.sendMessage("Spawn location set to your current position.");
