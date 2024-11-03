@@ -10,6 +10,14 @@ commands:
   setspawn:
     description: Set the spawn location to your current position.
     usage: /setspawn
+  staffchat:
+    discription: staff chat
+    usage: /staffchat
+    aliases: [sc]
+  clearchat:
+    discription: clear chat
+    usage: /cc
+    aliases: [cc]
 #  dupe:
 #    description: Dupe Your Items
 #    usage: /<command>
