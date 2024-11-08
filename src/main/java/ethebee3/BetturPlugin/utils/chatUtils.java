@@ -1,5 +1,8 @@
 package ethebee3.BetturPlugin.utils;
 
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
 public class chatUtils {
@@ -12,6 +15,14 @@ public class chatUtils {
         } else {
             player.sendMessage(message);
         }
+    }
+
+    //public static void sendMessage(Player player, Component message, Boolean usePrefix) {
+    //    Audience.audience().sendMessage(message);
+    //}
+
+    public static String minimessage() {
+        return null;
     }
 
 

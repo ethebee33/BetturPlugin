@@ -7,6 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Gradient {
+    public static String formatGradient(String message, String color1, String color2) {
+        List<ChatColor> gradient = generateGradient(color1, color2, message.length());
+        int i = 0;
+        String stringBuilder = "";
+        for(ChatColor color : gradient) {
+            stringBuilder.append("&").append(color).append(message.charAt(i))
+            i++;
+        }
+        return null;
+    }
 
     public static List<ChatColor> generateGradient(String color1, String color2, int length) {
 

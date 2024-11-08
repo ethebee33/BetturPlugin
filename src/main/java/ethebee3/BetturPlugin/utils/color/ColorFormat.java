@@ -98,4 +98,6 @@ public class ColorFormat {
         }
         return stringBuilder.toString();
     }
+
+
 }

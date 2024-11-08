@@ -18,9 +18,9 @@ public class ColorConfig {
 
     private YamlConfiguration yaml;
 
-    private Map<String, ChatColor> colors;
+    private static Map<String, ChatColor> colors;
 
-    private Map<String, List<String>> gradients;
+    private static Map<String, List<String>> gradients;
 
     private String colorsCode;
 
