@@ -1,8 +1,5 @@
 package ethebee3.BetturPlugin;
 
-import ethebee3.BetturPlugin.commands.spawnUtils.ClearChatCMD;
-import ethebee3.BetturPlugin.commands.spawnUtils.SpawnCMD;
-import ethebee3.BetturPlugin.commands.spawnUtils.StaffChatCMD;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -10,7 +7,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 
+import ethebee3.BetturPlugin.commands.spawnUtils.ClearChatCMD;
+import ethebee3.BetturPlugin.commands.spawnUtils.SpawnCMD;
+import ethebee3.BetturPlugin.commands.spawnUtils.StaffChatCMD;
+
 import ethebee3.BetturPlugin.events.*;
+
+import static ethebee3.BetturPlugin.data.dataCentral.dataCentralLoad;
 import static ethebee3.BetturPlugin.discord.discordBot.registerBot;
 import static ethebee3.BetturPlugin.discord.discordBot.unregisterBot;
 import static ethebee3.BetturPlugin.utils.logUtils.registerLogger;
@@ -20,6 +23,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         registerConfigs();
+        dataCentralLoad(this);
         registerListeners();
         registerCommands();
         registerLogger(this);
@@ -36,6 +40,8 @@ public final class Main extends JavaPlugin {
     public static File wordsFile;
     public static FileConfiguration tempDataConfig;
     public static FileConfiguration wordsConfig;
+
+    @Deprecated
     public void registerConfigs() {
         //tempdata.yml
         tempDataFile = new File(this.getDataFolder(), "tempData.yml");
