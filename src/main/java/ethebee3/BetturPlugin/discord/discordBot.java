@@ -18,7 +18,8 @@ public class discordBot {
     private static DiscordApi api;
 
     public static void registerBot(Main main) {
-        registerBot(main);
+        //temp disable because of errors
+        //registerBot(main);
     }
 
     public void registerBot(JavaPlugin plugin) {
