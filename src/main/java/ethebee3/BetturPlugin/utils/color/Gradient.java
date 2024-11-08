@@ -6,13 +6,15 @@ import org.bukkit.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.kyori.adventure.text.format.TextColor.color;
+
 public class Gradient {
     public static String formatGradient(String message, String color1, String color2) {
         List<ChatColor> gradient = generateGradient(color1, color2, message.length());
         int i = 0;
-        String stringBuilder = "";
+        StringBuilder stringBuilder = new StringBuilder();
         for(ChatColor color : gradient) {
-            stringBuilder.append("&").append(color).append(message.charAt(i))
+            stringBuilder.append("&").append(color).append(message.charAt(i));
             i++;
         }
         return null;
