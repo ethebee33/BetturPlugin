@@ -9,15 +9,30 @@ import java.util.List;
 import static net.kyori.adventure.text.format.TextColor.color;
 
 public class Gradient {
-    public static String formatGradient(String message, String color1, String color2) {
+    public static String formatGradientString(String message, String color1, String color2) {
         List<ChatColor> gradient = generateGradient(color1, color2, message.length());
         int i = 0;
         StringBuilder stringBuilder = new StringBuilder();
         for(ChatColor color : gradient) {
-            stringBuilder.append("&").append(color).append(message.charAt(i));
-            i++;
+            if (!(i>= message.length())) {
+                stringBuilder.append(color).append(message.charAt(i));
+                i++;
+            }
         }
-        return null;
+        return stringBuilder.toString();
+    }
+
+    public static StringBuilder formatGradientStringBuilder(String message, String color1, String color2) {
+        List<ChatColor> gradient = generateGradient(color1, color2, message.length());
+        int i = 0;
+        StringBuilder stringBuilder = new StringBuilder();
+        for(ChatColor color : gradient) {
+            if (!(i>= message.length())) {
+                stringBuilder.append(color).append(message.charAt(i));
+                i++;
+            }
+        }
+        return stringBuilder;
     }
 
     public static List<ChatColor> generateGradient(String color1, String color2, int length) {
