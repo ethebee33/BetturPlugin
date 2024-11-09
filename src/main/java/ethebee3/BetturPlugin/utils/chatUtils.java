@@ -17,13 +17,5 @@ public class chatUtils {
         }
     }
 
-    //public static void sendMessage(Player player, Component message, Boolean usePrefix) {
-    //    Audience.audience().sendMessage(message);
-    //}
-
-    public static String minimessage() {
-        return null;
-    }
-
-
+    public static String formatMessageForPlayer(StringBuilder stringBuilder, Player player) {}
 }
