@@ -1,12 +1,19 @@
 package ethebee3.BetturPlugin.events;
 
+import ethebee3.BetturPlugin.utils.chatUtils;
+import ethebee3.BetturPlugin.utils.color.ColorFormat;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import ethebee3.BetturPlugin.utils.ChatUtils.SwearUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import ethebee3.BetturPlugin.Main;
-import ethebee3.BetturPlugin.utils.ChatUtils;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import java.util.List;
+import java.util.logging.Level;
 
 public class onMessage implements Listener {
     private final Main plugin;
@@ -16,26 +23,12 @@ public class onMessage implements Listener {
 
     @EventHandler
     public void onMessage(AsyncPlayerChatEvent event) {
-        String swear = String.valueOf(checkSwear(event.getMessage()));
-        if (swear != null) {
-            event.setCancelled(true);
-            ChatUtils.sendMessage(event.getPlayer(), String.join("A word in this sentence is not allowed:", swear), true);
-            ChatUtils.sendMessage(event.getPlayer(), event.getMessage(), false);
-            ChatUtils.sendMessage(event.getPlayer(), "If you think this is wrong, please report it", false); //change this to true?? idrk might look better
+        //SwearUtils.checkForSwearing(event);
+        for(Player player : Bukkit.getOnlinePlayers()) {
+            String e = ColorFormat.formatText(event.getMessage());
+            plugin.getLogger().log(Level.INFO, e);
+            chatUtils.sendMessage(player, e, false);
         }
-    }
 
-    public boolean checkSwear(String message) {
-        if (Main.wordsConfig == null) {
-            return false;
-        }
-        List<String> warnList = Main.wordsConfig.getStringList("warnList");
-        for (int i = 1; i < warnList.size(); i++) {
-            String word = warnList.get(i);
-            if (message.contains(word)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
