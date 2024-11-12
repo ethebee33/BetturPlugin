@@ -18,6 +18,9 @@ commands:
     discription: clear chat
     usage: /cc
     aliases: [cc]
+  pvp:
+    discription: toggle pvp
+    usage: /pvp [on/off]
 #  dupe:
 #    description: Dupe Your Items
 #    usage: /<command>

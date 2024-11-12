@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    //id("io.papermc.paperweight.userdev") version "1.5.9"
 }
 
 group = project.name
@@ -15,17 +16,33 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://repo.papermc.io/repository/maven-public/" }
+    maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+    maven { url "https://maven.enginehub.org/repo/" }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://jitpack.io' }
 }
 
 
 dependencies {
+    //https://hub.spigotmc.org/nexus/service/rest/repository/browse/snapshots/org/spigotmc/spigot-api/
     //spigot
     compileOnly("org.spigotmc:spigot-api:${MCversion}-R0.1-SNAPSHOT")
+
+    //paper
+    //paperweight.paperDevBundle("1.20.1-R0.1-SNAPSHOT")
+
     //javacord for discord bot
     implementation('org.javacord:javacord:3.8.0')
     //luckperms api
     compileOnly("net.luckperms:api:5.4")
-    //https://hub.spigotmc.org/nexus/service/rest/repository/browse/snapshots/org/spigotmc/spigot-api/
+    //worldguard api
+    implementation 'com.sk89q.worldguard:worldguard-bukkit:7.0.9'
+    //adventure-api
+    implementation("net.kyori:adventure-api:4.17.0")
+    implementation("net.kyori:adventure-text-minimessage:4.17.0")
 }
 
 def targetJavaVersion = 17

@@ -29,7 +29,8 @@ public class ClearChatCMD implements CommandExecutor {
             commandSender.sendMessage("You dont have the permission to execute this command");
             return true;
         }
-        for(int i=0; i>300; i++ ) {
+
+        for(int i=0; i<300; i++ ) {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 onlinePlayer.sendMessage("");
             }
