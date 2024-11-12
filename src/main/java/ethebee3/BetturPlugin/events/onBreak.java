@@ -9,28 +9,32 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.entity.Player;
 
 import java.util.Collection;
 import java.util.HashMap;
 
-
 public class onBreak implements Listener {
     private final Main plugin;
+
     public onBreak(Main plugin) {
         this.plugin = plugin;
     }
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
-        if (event.getPlayer().getItemInUse() != null) {
+        Player player = event.getPlayer();
+        ItemStack tool = player.getInventory().getItemInMainHand();
+
+        if (tool != null) {
             event.setDropItems(false);
-            Collection<ItemStack> drops = calcItems(event.getPlayer().getItemInUse(), event.getBlock());
+            Collection<ItemStack> drops = calcItems(tool, event.getBlock());
             spawnItems(drops, event);
         }
     }
 
     public Collection<ItemStack> calcItems(ItemStack tool, Block block) {
-        int fortuneLevel = itemUtils.hasEnchant(tool, Enchantment.LOOT_BONUS_BLOCKS);
+        int fortuneLevel = itemUtils.hasEnchant(tool, Enchantment.FORTUNE);
         Collection<ItemStack> drops = block.getDrops(tool);
 
         if (fortuneLevel > 0) {
@@ -43,10 +47,10 @@ public class onBreak implements Listener {
     }
 
     public void spawnItems(Collection<ItemStack> drops, BlockBreakEvent event) {
-        //finish
         Block block = event.getBlock();
         PlayerInventory inventory = event.getPlayer().getInventory();
-        for(ItemStack drop : drops) {
+
+        for (ItemStack drop : drops) {
             HashMap<Integer, ItemStack> remainingItems = inventory.addItem(drop);
 
             // Drop remaining items if inventory is full
@@ -57,5 +61,4 @@ public class onBreak implements Listener {
             }
         }
     }
-
 }

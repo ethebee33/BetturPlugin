@@ -3,6 +3,7 @@ package ethebee3.BetturPlugin.utils;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.Component;
+import ethebee3.BetturPlugin.utils.luckpermsUtils;
 import org.bukkit.entity.Player;
 
 public class chatUtils {
@@ -17,5 +18,17 @@ public class chatUtils {
         }
     }
 
-    public static String formatMessageForPlayer(StringBuilder stringBuilder, Player player) {}
+    static String seperator = " ⇒ ";
+
+    public static String formatMessageForPlayer(StringBuilder stringBuilder, Player player) {
+        String stringBuilder1 = player.getDisplayName() +
+                seperator +
+                stringBuilder;
+
+        if (luckpermsUtils.getPrefix(player) != null) {
+            return luckpermsUtils.getPrefix(player) + stringBuilder1;
+        } else {
+            return stringBuilder1;
+        }
+    }
 }

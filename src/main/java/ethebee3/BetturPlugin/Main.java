@@ -1,5 +1,6 @@
 package ethebee3.BetturPlugin;
 
+import ethebee3.BetturPlugin.commands.spawnUtils.pvpCMD;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -60,8 +61,10 @@ public final class Main extends JavaPlugin {
     }
 
     public void registerListeners() {
+        this.getServer().getPluginManager().registerEvents(new onBreak(this), this);
         this.getServer().getPluginManager().registerEvents(new onMessage(this), this);
         this.getServer().getPluginManager().registerEvents(new onDeath(this), this);
+
     }
 
     public void registerCommands() {
@@ -72,6 +75,8 @@ public final class Main extends JavaPlugin {
         this.getCommand("clearchat").setExecutor(new ClearChatCMD(this));
         //staffchat command
         this.getCommand("staffchat").setExecutor(new StaffChatCMD(this));
+        //pvp
+        this.getCommand("pvp").setExecutor(new pvpCMD(this));
     }
 
     public boolean makeYml(File temp) {

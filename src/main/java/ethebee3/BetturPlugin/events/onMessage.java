@@ -1,11 +1,7 @@
 package ethebee3.BetturPlugin.events;
 
 import ethebee3.BetturPlugin.utils.chatUtils;
-import ethebee3.BetturPlugin.utils.color.ColorFormat;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.audience.Audience;
-import net.kyori.adventure.text.minimessage.MiniMessage;
-import ethebee3.BetturPlugin.utils.ChatUtils.SwearUtils;
+import ethebee3.BetturPlugin.utils.color.Gradient;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,12 +19,15 @@ public class onMessage implements Listener {
 
     @EventHandler
     public void onMessage(AsyncPlayerChatEvent event) {
-        //SwearUtils.checkForSwearing(event);
+
+        //event.setCancelled(true);
+        /**
         for(Player player : Bukkit.getOnlinePlayers()) {
-            String e = ColorFormat.formatText(event.getMessage());
-            plugin.getLogger().log(Level.INFO, e);
-            chatUtils.sendMessage(player, e, false);
-        }
+            StringBuilder gradient = Gradient.formatGradientStringBuilder(event.getMessage(), "#000000", "#FFFFFF");
+            TODO: make a config part of playerData for gradient settings
+            String message = chatUtils.formatMessageForPlayer(gradient, event.getPlayer());
+            chatUtils.sendMessage(player, message, false);
+        }*/
 
     }
 }
