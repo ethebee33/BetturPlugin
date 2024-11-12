@@ -33,7 +33,13 @@ public class playerData {
         File playerFile = new File(plugin.getDataFolder(), "playerdata/" + playerUUID.toString() + ".yml");
         File playerDataFolder = new File(plugin.getDataFolder(), "playerdata/");
         if (!playerDataFolder.exists()) playerDataFolder.mkdir();
-        if (!playerFile.exists()) playerFile.createNewFile();
+        if (!playerFile.exists()) {
+            try {
+                playerFile.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
         
         YamlConfiguration playerYaml = YamlConfiguration.loadConfiguration(playerFile);
         playerDataMap.put(playerUUID, playerYaml);
