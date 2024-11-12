@@ -26,11 +26,10 @@ public class onBreak implements Listener {
         Player player = event.getPlayer();
         ItemStack tool = player.getInventory().getItemInMainHand();
 
-        if (tool != null) {
-            event.setDropItems(false);
-            Collection<ItemStack> drops = calcItems(tool, event.getBlock());
-            spawnItems(drops, event);
-        }
+        event.setDropItems(false);
+        Collection<ItemStack> drops = calcItems(tool, event.getBlock());
+        spawnItems(drops, event);
+
     }
 
     public Collection<ItemStack> calcItems(ItemStack tool, Block block) {

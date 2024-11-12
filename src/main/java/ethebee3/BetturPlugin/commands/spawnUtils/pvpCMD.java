@@ -27,7 +27,7 @@ public class pvpCMD implements CommandExecutor {
             return true;
         }
 
-        YamlConfiguration playerdata = playerData.getDataForPlayer(((Player) commandSender).getUniqueId());
+        YamlConfiguration playerdata = playerData.getDataForPlayer(player.getUniqueId());
 
         if (playerdata.getBoolean("pvp")) {
             playerdata.set("pvp", false);

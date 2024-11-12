@@ -64,7 +64,7 @@ public final class Main extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new onBreak(this), this);
         this.getServer().getPluginManager().registerEvents(new onMessage(this), this);
         this.getServer().getPluginManager().registerEvents(new onDeath(this), this);
-
+        this.getServer().getPluginManager().registerEvents(new onDamage(this), this);
     }
 
     public void registerCommands() {

@@ -27,5 +27,4 @@ public class StaffUtils {
             chatUtils.sendMessage(onlinePlayer, staffMessage, false);
         }
     }
-
 }

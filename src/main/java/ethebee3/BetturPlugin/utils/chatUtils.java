@@ -18,6 +18,7 @@ public class chatUtils {
         }
     }
 
+    //TODO: also make this set by config :fire:
     static String seperator = " ⇒ ";
 
     public static String formatMessageForPlayer(StringBuilder stringBuilder, Player player) {
