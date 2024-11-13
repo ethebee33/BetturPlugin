@@ -48,7 +48,7 @@ public class onBreak implements Listener {
     public void spawnItems(Collection<ItemStack> drops, BlockBreakEvent event) {
         Block block = event.getBlock();
         PlayerInventory inventory = event.getPlayer().getInventory();
-
+        if (event.isCancelled()) return;
         for (ItemStack drop : drops) {
             HashMap<Integer, ItemStack> remainingItems = inventory.addItem(drop);
 
