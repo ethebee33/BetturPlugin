@@ -36,7 +36,7 @@ public final class Main extends JavaPlugin {
         unregisterBot();
     }
 
-    //TODO: make a default config, to store configurations
+    //TODO: make tempdata and wordsFile stored in dataCentral
     public static File tempDataFile;
     public static File wordsFile;
     public static FileConfiguration tempDataConfig;
