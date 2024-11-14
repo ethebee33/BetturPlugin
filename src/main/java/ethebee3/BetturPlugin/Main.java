@@ -43,6 +43,8 @@ public final class Main extends JavaPlugin {
     public static File wordsFile;
     public static FileConfiguration tempDataConfig;
     public static FileConfiguration wordsConfig;
+    public static File guiFile;
+    public static FileConfiguration guiConfig;
 
     @Deprecated
     public void registerConfigs() {
@@ -59,6 +61,13 @@ public final class Main extends JavaPlugin {
             if (makeYml(wordsFile)) wordsConfig = YamlConfiguration.loadConfiguration(wordsFile);
         } else {
             wordsConfig = YamlConfiguration.loadConfiguration(wordsFile);
+        }
+        //GUIs.yml
+        guiFile = new File(this.getDataFolder(), "GUIs.yml");
+        if (!guiFile.exists()) {
+            if (makeYml(guiFile)) guiConfig = YamlConfiguration.loadConfiguration(guiFile);
+        } else {
+            guiConfig = YamlConfiguration.loadConfiguration(guiFile);
         }
     }
 
