@@ -1,16 +1,18 @@
 package ethebee3.BetturPlugin;
 
-import ethebee3.BetturPlugin.commands.spawnUtils.pvpCMD;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
-
-import ethebee3.BetturPlugin.commands.spawnUtils.ClearChatCMD;
-import ethebee3.BetturPlugin.commands.spawnUtils.SpawnCMD;
-import ethebee3.BetturPlugin.commands.spawnUtils.StaffChatCMD;
+//changed to commands.spawnUtils.*;
+//import ethebee3.BetturPlugin.commands.spawnUtils.pvpCMD;
+//import ethebee3.BetturPlugin.commands.spawnUtils.ClearChatCMD;
+//import ethebee3.BetturPlugin.commands.spawnUtils.SpawnCMD;
+//import ethebee3.BetturPlugin.commands.spawnUtils.StaffChatCMD;
+import ethebee3.BetturPlugin.commands.spawnUtils.*;
 
 import ethebee3.BetturPlugin.events.*;
 
@@ -77,6 +79,8 @@ public final class Main extends JavaPlugin {
         this.getCommand("staffchat").setExecutor(new StaffChatCMD(this));
         //pvp
         this.getCommand("pvp").setExecutor(new pvpCMD(this));
+        this.getCommand("compress").setExecutor(new compressCMD(this));
+        this.getCommand("decompress").setExecutor(new decompressCMD(this));
     }
 
     public boolean makeYml(File temp) {

@@ -24,3 +24,9 @@ commands:
 #  dupe:
 #    description: Dupe Your Items
 #    usage: /<command>
+  compress:
+    description: compress item
+    usage: /compress
+  decompress:
+    description: decompress string
+    usage: /decompress [string]
