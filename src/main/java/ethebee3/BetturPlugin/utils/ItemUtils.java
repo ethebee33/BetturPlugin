@@ -1,7 +1,10 @@
 package ethebee3.BetturPlugin.utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
@@ -49,6 +52,20 @@ public class ItemUtils {
 
         return item;
     }
+
+    public static ItemStack getSmeltedItem(ItemStack item) {
+        FurnaceRecipe smeltingRecipe = getSmeltingRecipe(item);
+        if (smeltingRecipe != null) {
+            return smeltingRecipe.getResult();
+        }
+        return null;
+    }
+
+    public static FurnaceRecipe getSmeltingRecipe(ItemStack item) {
+        NamespacedKey key = new NamespacedKey("minecraft", "smelting/" + item.getType().name().toLowerCase());
+        return (FurnaceRecipe) Bukkit.getRecipe(key);
+    }
+
 }
 
 
