@@ -25,6 +25,7 @@ public class onBreak implements Listener {
         this.plugin = plugin;
     }
 
+    //TODO: make this a config in datacentral
     Collection<Material> toSmelt = new ArrayList<Material>() {{
         add(Material.IRON_INGOT);
         add(Material.GOLD_INGOT);
