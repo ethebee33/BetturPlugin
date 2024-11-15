@@ -1,6 +1,7 @@
 package ethebee3.BetturPlugin.events;
 
 import ethebee3.BetturPlugin.utils.ItemUtils;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,9 +11,12 @@ import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class onBreak implements Listener {
     private final Main plugin;
@@ -20,6 +24,12 @@ public class onBreak implements Listener {
     public onBreak(Main plugin) {
         this.plugin = plugin;
     }
+
+    Collection<Material> toSmelt = new ArrayList<Material>() {{
+        add(Material.IRON_INGOT);
+        add(Material.GOLD_INGOT);
+        add(Material.NETHERITE_INGOT);
+    }};
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
@@ -42,8 +52,12 @@ public class onBreak implements Listener {
             }
         }
         for (ItemStack drop : drops) {
-            drops.remove(drop);
-            drops.add(ItemUtils.getSmeltedItem(drop));
+            for (Material material : toSmelt) {
+                if (drop.getType() == material) {
+                    drops.remove(drop);
+                    drops.add(ItemUtils.getSmeltedItem(drop));
+                }
+            }
         }
 
         return drops;
