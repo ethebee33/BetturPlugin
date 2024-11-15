@@ -14,10 +14,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-//temp data config import
-import static ethebee3.BetturPlugin.Main.tempDataConfig;
-import static ethebee3.BetturPlugin.Main.tempDataFile;
-
 public class StaffChatCMD implements CommandExecutor {
 
     private final JavaPlugin plugin;
