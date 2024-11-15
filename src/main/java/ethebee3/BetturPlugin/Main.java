@@ -1,6 +1,7 @@
 package ethebee3.BetturPlugin;
 
 
+import ethebee3.BetturPlugin.commands.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -8,10 +9,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 //changed to commands.spawnUtils.*;
-//import ethebee3.BetturPlugin.commands.spawnUtils.pvpCMD;
-//import ethebee3.BetturPlugin.commands.spawnUtils.ClearChatCMD;
+//import ethebee3.BetturPlugin.commands.pvpCMD;
+//import ethebee3.BetturPlugin.commands.ClearChatCMD;
 //import ethebee3.BetturPlugin.commands.spawnUtils.SpawnCMD;
-//import ethebee3.BetturPlugin.commands.spawnUtils.StaffChatCMD;
+//import ethebee3.BetturPlugin.commands.StaffChatCMD;
 import ethebee3.BetturPlugin.commands.spawnUtils.*;
 
 import ethebee3.BetturPlugin.events.*;

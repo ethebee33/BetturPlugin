@@ -13,10 +13,10 @@ public class guiUtils {
     public File guiYML = Main.guiFile;
     public FileConfiguration guiConfig = Main.guiConfig;
 
-    public Inventory inv;
-    public Inventory createGUI(Player Owner, String name, Integer slots) {
-        inv = Bukkit.createInventory(Owner, slots, name);
-        addToYML(inv);
+    public static Inventory createGUI(Player Owner, String name, Integer slots) {
+        Inventory inv = Bukkit.createInventory(Owner, slots, name);
+        //not even sure why this exists
+        //addToYML(inv);
         return inv;
 
     }
@@ -25,4 +25,5 @@ public class guiUtils {
         String Title = toSave.toString();
         guiConfig.set(Title, toSave);
     }
+
 }

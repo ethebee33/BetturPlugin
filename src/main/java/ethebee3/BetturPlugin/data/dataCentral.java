@@ -24,6 +24,8 @@ public class dataCentral {
     public static void dataCentralLoad(Main plugin) {
         playerData.playerData(plugin);
         tempData.tempData(plugin);
+        wordsData.wordsData(plugin);
+        autocompData.autocompData(plugin);
     }
 
     public static boolean makeYml(File temp) {
