@@ -39,29 +39,11 @@ public final class Main extends JavaPlugin {
     }
 
     //TODO: make tempdata and wordsFile stored in dataCentral
-    public static File tempDataFile;
-    public static File wordsFile;
-    public static FileConfiguration tempDataConfig;
-    public static FileConfiguration wordsConfig;
     public static File guiFile;
     public static FileConfiguration guiConfig;
 
     @Deprecated
     public void registerConfigs() {
-        //tempdata.yml
-        tempDataFile = new File(this.getDataFolder(), "tempData.yml");
-        if (!tempDataFile.exists()) {
-            if (makeYml(tempDataFile)) tempDataConfig = YamlConfiguration.loadConfiguration(tempDataFile);
-        } else {
-            tempDataConfig = YamlConfiguration.loadConfiguration(tempDataFile);
-        }
-        //words.yml
-        wordsFile = new File(this.getDataFolder(), "words.yml");
-        if (!wordsFile.exists()) {
-            if (makeYml(wordsFile)) wordsConfig = YamlConfiguration.loadConfiguration(wordsFile);
-        } else {
-            wordsConfig = YamlConfiguration.loadConfiguration(wordsFile);
-        }
         //GUIs.yml
         guiFile = new File(this.getDataFolder(), "GUIs.yml");
         if (!guiFile.exists()) {

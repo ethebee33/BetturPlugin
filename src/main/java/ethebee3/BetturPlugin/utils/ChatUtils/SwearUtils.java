@@ -1,6 +1,7 @@
 package ethebee3.BetturPlugin.utils.ChatUtils;
 
 import ethebee3.BetturPlugin.Main;
+import ethebee3.BetturPlugin.data.wordsData;
 import ethebee3.BetturPlugin.utils.chatUtils;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
@@ -18,10 +19,10 @@ public class SwearUtils {
     }
 
     public static String checkSwear(String message) {
-        if (Main.wordsConfig == null) {
+        if (wordsData.wordsDataConfig == null) {
             return null;
         }
-        List<String> warnList = Main.wordsConfig.getStringList("warnList");
+        List<String> warnList = wordsData.wordsDataConfig.getStringList("warnList");
         for (int i = 1; i < warnList.size(); i++) {
             String word = warnList.get(i);
             if (message.contains(word)) {

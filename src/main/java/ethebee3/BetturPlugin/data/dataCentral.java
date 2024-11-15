@@ -7,6 +7,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +22,17 @@ public class dataCentral {
 
 
     public static void dataCentralLoad(Main plugin) {
-        //tempdata
         playerData.playerData(plugin);
-        //TODO: move ethebee3.BetturPlugin.Main.RegisterConfigs to forms of configs using example from playerData
+        tempData.tempData(plugin);
+    }
+
+    public static boolean makeYml(File temp) {
+        try {
+            temp.createNewFile();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

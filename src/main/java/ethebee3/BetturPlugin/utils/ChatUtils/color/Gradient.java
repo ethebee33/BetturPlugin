@@ -1,4 +1,4 @@
-package ethebee3.BetturPlugin.utils.color;
+package ethebee3.BetturPlugin.utils.ChatUtils.color;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Color;

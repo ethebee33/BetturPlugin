@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 //temp data config import
-import static ethebee3.BetturPlugin.Main.tempDataConfig;
-import static ethebee3.BetturPlugin.Main.tempDataFile;
+import static ethebee3.BetturPlugin.data.tempData.tempDataConfig;
+import static ethebee3.BetturPlugin.data.tempData.saveTempData;
 
 public class SpawnCMD implements CommandExecutor {
 
@@ -47,12 +47,8 @@ public class SpawnCMD implements CommandExecutor {
         tempDataConfig.set("spawn.yaw", location.getYaw());
         tempDataConfig.set("spawn.pitch", location.getPitch());
         tempDataConfig.set("spawn.world", location.getWorld().getName());
-        try {
-            tempDataConfig.save(tempDataFile);
-            loadSpawnLocation();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        saveTempData();
+        loadSpawnLocation();
     }
 
     @Override
