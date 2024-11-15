@@ -1,4 +1,4 @@
-package ethebee3.BetturPlugin.commands.spawnUtils;
+package ethebee3.BetturPlugin.commands;
 
 import ethebee3.BetturPlugin.utils.ChatUtils.StaffUtils;
 import org.bukkit.Bukkit;
