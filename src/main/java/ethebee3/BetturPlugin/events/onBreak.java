@@ -1,6 +1,6 @@
 package ethebee3.BetturPlugin.events;
 
-import ethebee3.BetturPlugin.utils.itemUtils;
+import ethebee3.BetturPlugin.utils.ItemUtils;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,13 +33,17 @@ public class onBreak implements Listener {
     }
 
     public Collection<ItemStack> calcItems(ItemStack tool, Block block) {
-        int fortuneLevel = itemUtils.hasEnchant(tool, Enchantment.FORTUNE);
+        int fortuneLevel = ItemUtils.hasEnchant(tool, Enchantment.FORTUNE);
         Collection<ItemStack> drops = block.getDrops(tool);
 
         if (fortuneLevel > 0) {
             for (ItemStack drop : drops) {
                 drop.setAmount(drop.getAmount() * fortuneLevel);
             }
+        }
+        for (ItemStack drop : drops) {
+            drops.remove(drop);
+            drops.add(ItemUtils.getSmeltedItem(drop));
         }
 
         return drops;
