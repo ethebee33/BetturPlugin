@@ -3,10 +3,14 @@ package ethebee3.BetturPlugin.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
 public class ItemUtils {
@@ -64,6 +68,27 @@ public class ItemUtils {
     public static FurnaceRecipe getSmeltingRecipe(ItemStack item) {
         NamespacedKey key = new NamespacedKey("minecraft", "smelting/" + item.getType().name().toLowerCase());
         return (FurnaceRecipe) Bukkit.getRecipe(key);
+    }
+
+    public static Collection<ItemStack> maxTools = new ArrayList<ItemStack>() {{
+        add(new ItemStack(Material.NETHERITE_SWORD));
+        add(new ItemStack(Material.NETHERITE_PICKAXE));
+        add(new ItemStack(Material.NETHERITE_AXE));
+        add(new ItemStack(Material.NETHERITE_SHOVEL));
+        add(new ItemStack(Material.NETHERITE_HOE));
+    }};
+
+    public static Material getOptimalTool(Block block) {
+        int e = -1;
+        BlockData data = block.getBlockData();
+        if (data.requiresCorrectToolForDrops()) {
+            for(ItemStack item : maxTools) {
+                if (block.isPreferredTool(item)) return item.getType();
+            }
+        } else {
+            return Material.AIR;
+        }
+        return null;
     }
 
 }

@@ -1,6 +1,7 @@
 package ethebee3.BetturPlugin.events;
 
 import ethebee3.BetturPlugin.utils.ItemUtils;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
@@ -27,6 +28,7 @@ public class onBreak implements Listener {
 
     //TODO: make this a config in datacentral
     Collection<Material> toSmelt = new ArrayList<Material>() {{
+        add(Material.STONE);
         add(Material.IRON_INGOT);
         add(Material.GOLD_INGOT);
         add(Material.NETHERITE_INGOT);
@@ -45,7 +47,7 @@ public class onBreak implements Listener {
 
     public Collection<ItemStack> calcItems(ItemStack tool, Block block) {
         int fortuneLevel = ItemUtils.hasEnchant(tool, Enchantment.FORTUNE);
-        Collection<ItemStack> drops = block.getDrops(tool);
+        Collection<ItemStack> drops = block.getDrops(new ItemStack(ItemUtils.getOptimalTool(block)));
 
         if (fortuneLevel > 0) {
             for (ItemStack drop : drops) {
@@ -65,6 +67,7 @@ public class onBreak implements Listener {
     }
 
     public void spawnItems(Collection<ItemStack> drops, BlockBreakEvent event) {
+        if (event.getPlayer().getGameMode() == GameMode.CREATIVE || event.getPlayer().getGameMode() == GameMode.SPECTATOR) return;
         Block block = event.getBlock();
         PlayerInventory inventory = event.getPlayer().getInventory();
         if (event.isCancelled()) return;
